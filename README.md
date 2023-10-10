@@ -29,8 +29,17 @@ pip install -r requirements.txt
 ```
 
 - Run combine_pdfs.py
-- Drop .pdf files in *Merge_PDFs* folder located in ~/Downloads
+- Drop .pdf files in *Combine_PDFs* folder located in ~/Downloads
   - Files are merged alphabetically (rename to reorder)
 - Press *Enter* when prompted to merge and output
-- Output file will be located in *Merge_PDFs* folder
+- Output file will be located in *Combine_PDFs* folder
 
+## Windows executable build
+
+```bash
+pyinstaller --onefile --icon=.\combine-pdfs\icon\pdf_icon.ico .\combine-pdfs\combine_pdfs.py
+```
+
+(Remove *--onefile* if having issues with Windows Defendor, etc. and see if that fixes the issue)
+
+Windows executable will be located in *dist* folder
