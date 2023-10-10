@@ -40,6 +40,6 @@ pip install -r requirements.txt
 pyinstaller --onefile --icon=.\combine-pdfs\icon\pdf_icon.ico .\combine-pdfs\combine_pdfs.py
 ```
 
-(Remove *--onefile* if having issues with Windows Defendor, etc. and see if that fixes the issue)
+(Remove *--onefile* if having issues with Windows Defender, etc. and see if that fixes the issue)
 
 Windows executable will be located in *dist* folder
