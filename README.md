@@ -37,7 +37,7 @@ pip install -r requirements.txt
 ## Windows executable build
 
 ```bash
-pyinstaller --onefile --icon=.\combine-pdfs\icon\pdf_icon.ico .\combine-pdfs\combine_pdfs.py
+pyinstaller --onefile --icon=.\combine-pdfs\icon\pdf_icon.ico -n "Combine PDFs" .\combine-pdfs\combine_pdfs.py
 ```
 
 (Remove *--onefile* if having issues with Windows Defender, etc. and see if that fixes the issue)
