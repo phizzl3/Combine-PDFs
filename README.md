@@ -1,7 +1,7 @@
 # Combine-PDFs
 
-Combines PDF files located in a specified folder.
-Defaults to: [USER]/Downloads/Combine_PDFs
+Combines PDF files located in a specified folder.  
+Defaults to: *[USER]/Downloads/Combine_PDFs*
 
 ## Build Info
 
