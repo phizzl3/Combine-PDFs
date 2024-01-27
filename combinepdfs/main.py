@@ -29,8 +29,12 @@ class CombinePDFs():
         self.output_file = SETTINGS["output file"]
         
         # Create the directory if it doesn't exist
-        if not self.merge_folder.is_dir():
-            Path.mkdir(self.merge_folder, parents=True)
+        try:
+            if not self.merge_folder.is_dir():
+                Path.mkdir(self.merge_folder, parents=True)
+        except OSError:
+            input(" Unable to create folder. Verify filepath.")
+            exit()
             
         print(f"\n   V{__version__}{art}")
 
