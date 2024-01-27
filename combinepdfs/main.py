@@ -15,19 +15,18 @@ import PyPDF2
 from modules.fileopen import openfile
 from modules.art import art
 from modules.settings import SETTINGS
+from modules.screenclr import clearscreen
 
 
-
-class CombinePDFs():
+class CombinePDFs:
     """Combine pdf files in Merge_PDFs Folder"""
 
     def __init__(self) -> None:
-        
         self.merge_folder = SETTINGS["merge folder"]
         self.files = []
         self.merger = PyPDF2.PdfMerger()
         self.output_file = SETTINGS["output file"]
-        
+
         # Create the directory if it doesn't exist
         try:
             if not self.merge_folder.is_dir():
@@ -35,13 +34,14 @@ class CombinePDFs():
         except OSError:
             input(" Unable to create working folder. Verify filepath in settings.json.")
             exit()
-            
+
         print(f"\n   V{__version__}{art}")
 
     def get_files_from_dir(self):
         """Generate a list of files found in merge folder"""
-        print(" Place PDFs in the following folder and press Enter.\n",
-            self.merge_folder)
+        print(
+            " Place PDFs in the following folder and press Enter.\n", self.merge_folder
+        )
         input()
         self.files = list(self.merge_folder.iterdir())
 
@@ -50,7 +50,7 @@ class CombinePDFs():
         try:
             for file in self.files:
                 self.merger.append(file)
-                
+
         except PyPDF2.errors.DependencyError:
             input(" Unable to merge due to protected files")
         except PyPDF2.errors.PdfReadError:
@@ -65,6 +65,8 @@ class CombinePDFs():
         """Opens the output file in the default application"""
         openfile(self.output_file)
 
+
+clearscreen()
 
 go = CombinePDFs()
 
