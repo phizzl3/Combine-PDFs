@@ -6,14 +6,15 @@ file to the same folder.
 
 """
 
+__version__ = "1.0.0"
+
 from pathlib import Path
 import PyPDF2
 
-from utils.openfile import openfile
+from utils.fileopen import openfile
 from utils.art import art
 
 
-VERSION = "0.1.3"
 WORKING_FOLDER = "Combine_PDFs"
 OUTPUT_FILE = "_Merged_PDF.pdf"
 
@@ -29,7 +30,7 @@ class CombinePDFs():
         # Create the directory if it doesn't exist
         if not self.merge_folder.is_dir():
             Path.mkdir(self.merge_folder)
-        print(f"\n  V.{VERSION}{art}")
+        print(f"\n  V{__version__}{art}")
 
     def get_files_from_dir(self):
         """Generate a list of files found in merge folder"""
