@@ -1,41 +1,49 @@
 """
 
-Searches for *.pdf files in "~User / Downloads / Merge_PDFs", 
-merges them (in alphabetical order), and outputs a single "_MergedPDF.pdf" 
+Searches for *.pdf files in the specified folder.
+Defaults to: "[user]/Downloads/Merge_PDFs", 
+Merges them (in alphabetical order), and outputs a single pdf 
 file to the same folder.
 
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
+import sys
 from pathlib import Path
 import PyPDF2
 
-from utils.fileopen import openfile
-from utils.art import art
+from modules.fileopen import openfile
+from modules.art import art
+from modules.settings import SETTINGS
+from modules.screenclr import clearscreen
 
 
-WORKING_FOLDER = "Combine_PDFs"
-OUTPUT_FILE = "_Merged_PDF.pdf"
-
-
-class CombinePDFs():
+class CombinePDFs:
     """Combine pdf files in Merge_PDFs Folder"""
 
     def __init__(self) -> None:
-        self.merge_folder = Path().home() / "Downloads" / WORKING_FOLDER
+        self.merge_folder = SETTINGS["merge folder"]
         self.files = []
         self.merger = PyPDF2.PdfMerger()
-        self.output_file = self.merge_folder / OUTPUT_FILE
+        self.output_file = SETTINGS["output file"]
+
         # Create the directory if it doesn't exist
-        if not self.merge_folder.is_dir():
-            Path.mkdir(self.merge_folder)
-        print(f"\n  V{__version__}{art}")
+        try:
+            if not self.merge_folder.is_dir():
+                Path.mkdir(self.merge_folder, parents=True)
+        except OSError:
+            input(" Unable to create working folder. Verify filepath in settings.json.")
+            sys.exit()
+
+        print(f"\n   V{__version__}{art}")
 
     def get_files_from_dir(self):
         """Generate a list of files found in merge folder"""
-        input(
-            f" Place PDFs in *{WORKING_FOLDER}* folder located in: ~/Downloads and press Enter...")
+        print(
+            " Place PDFs in the following folder and press Enter.\n", self.merge_folder
+        )
+        input()
         self.files = list(self.merge_folder.iterdir())
 
     def merge_files_from_dir(self):
@@ -43,6 +51,7 @@ class CombinePDFs():
         try:
             for file in self.files:
                 self.merger.append(file)
+
         except PyPDF2.errors.DependencyError:
             input(" Unable to merge due to protected files")
         except PyPDF2.errors.PdfReadError:
@@ -57,6 +66,8 @@ class CombinePDFs():
         """Opens the output file in the default application"""
         openfile(self.output_file)
 
+
+clearscreen()
 
 go = CombinePDFs()
 
