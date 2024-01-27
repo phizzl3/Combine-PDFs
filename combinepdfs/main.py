@@ -12,9 +12,9 @@ __version__ = "1.1.0"
 from pathlib import Path
 import PyPDF2
 
-from utils.fileopen import openfile
-from utils.art import art
-from utils.settings import SETTINGS
+from modules.fileopen import openfile
+from modules.art import art
+from modules.settings import SETTINGS
 
 
 

@@ -6,8 +6,8 @@ file, and use that data to generate a settings file for import.
 """
 
 from pathlib import Path
-from utils.loadjsondata import loadjson
-from utils.resolvestrdir import resolvedir
+from modules.loadjsondata import loadjson
+from modules.resolvestrdir import resolvedir
 
 # json file location
 JSON = Path().home() / "PyAppFiles" / "Combine PDFs" / "settings.json"
