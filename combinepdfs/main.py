@@ -33,7 +33,7 @@ class CombinePDFs():
             if not self.merge_folder.is_dir():
                 Path.mkdir(self.merge_folder, parents=True)
         except OSError:
-            input(" Unable to create folder. Verify filepath.")
+            input(" Unable to create working folder. Verify filepath in settings.json.")
             exit()
             
         print(f"\n   V{__version__}{art}")
