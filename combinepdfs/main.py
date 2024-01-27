@@ -9,6 +9,7 @@ file to the same folder.
 
 __version__ = "1.1.0"
 
+import sys
 from pathlib import Path
 import PyPDF2
 
@@ -33,7 +34,7 @@ class CombinePDFs:
                 Path.mkdir(self.merge_folder, parents=True)
         except OSError:
             input(" Unable to create working folder. Verify filepath in settings.json.")
-            exit()
+            sys.exit()
 
         print(f"\n   V{__version__}{art}")
 
