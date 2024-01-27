@@ -1,45 +1,25 @@
 # Combine-PDFs
 
-Combines PDF files located in a folder in ~User / Downloads
+Combines PDF files located in a folder in [USER]/Downloads
 
-## Installation 
+## Build Info
 
-- Create virtual environment and activate it
-
-(Windows)
+Windows
 
 ```bash
-py -m venv env
-
-.\env\Scripts\activate
+pyinstaller -F -n "Combine PDFs" --icon=.\icon\pdf.ico .\combinepdfs\main.py
 ```
 
-(Mac/Linux)
+MacOS
 
 ```bash
-python3 -m venv env
-
-source env/bin/activate
+pyinstaller -F -n "Combine PDFs" ./combinepdfs/main.py
 ```
 
-- Install depencencies 
-
-```bash
-pip install -r requirements.txt
-```
-
-- Run combine_pdfs.py
-- Drop .pdf files in *Combine_PDFs* folder located in ~/Downloads
+- Run Combine PDFs
+- Drop \*.pdf files in *Combine_PDFs* folder located in ~/Downloads
   - Files are merged alphabetically (rename to reorder)
 - Press *Enter* when prompted to merge and output
 - Output file will be located in *Combine_PDFs* folder
 
-## Windows executable build
-
-```bash
-pyinstaller --onefile --icon=.\combine-pdfs\icon\pdf_icon.ico -n "Combine PDFs" .\combine-pdfs\combine_pdfs.py
-```
-
-(Remove *--onefile* if having issues with Windows Defender, etc. and see if that fixes the issue)
-
-Windows executable will be located in *dist* folder
+Remove *-F* if having issues with Windows Defender, etc.
