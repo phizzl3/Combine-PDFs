@@ -32,12 +32,13 @@ class CombinePDFs():
         if not self.merge_folder.is_dir():
             Path.mkdir(self.merge_folder, parents=True)
             
-        print(f"\n  V{__version__}{art}")
+        print(f"\n   V{__version__}{art}")
 
     def get_files_from_dir(self):
         """Generate a list of files found in merge folder"""
-        input(
-            f" Place PDFs in *{self.merge_folder}* and press Enter...")
+        print(" Place PDFs in the following folder and press Enter.\n",
+            self.merge_folder)
+        input()
         self.files = list(self.merge_folder.iterdir())
 
     def merge_files_from_dir(self):
